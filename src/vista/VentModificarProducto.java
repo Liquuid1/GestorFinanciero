@@ -1,20 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-/**
- *
- * @author liquu
- */
+import controlador.TarjetaDAO;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+import modelo.TarjetaCredito;
+
+
+
 public class VentModificarProducto extends javax.swing.JFrame {
+    
+    public Usuario usu;
 
     /**
      * Creates new form VentModificarProducto
      */
-    public VentModificarProducto() {
+    public VentModificarProducto(Usuario usu) {
+        this.usu = usu;
         initComponents();
     }
 
@@ -27,24 +29,40 @@ public class VentModificarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblCupo = new javax.swing.JLabel();
+        lblDiaFacturacion = new javax.swing.JLabel();
         txtNombreProducto = new javax.swing.JTextField();
         txtCupo = new javax.swing.JTextField();
-        txtFechaFacturacion = new javax.swing.JTextField();
+        txtDiaFacturacion = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nombre Producto");
+        lblNombre.setText("Nombre Tarjeta");
 
-        jLabel2.setText("Cupo");
+        lblCupo.setText("Cupo");
 
-        jLabel3.setText("Fecha Facturación");
+        lblDiaFacturacion.setText("Día Facturación");
 
         txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreProductoActionPerformed(evt);
+            }
+        });
+
+        btnIngresar.setText("Ingresar Tarjeta");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -55,32 +73,43 @@ public class VentModificarProducto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombreProducto)
-                    .addComponent(txtCupo)
-                    .addComponent(txtFechaFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                .addContainerGap(240, Short.MAX_VALUE))
+                    .addComponent(lblNombre)
+                    .addComponent(lblCupo)
+                    .addComponent(btnIngresar)
+                    .addComponent(lblDiaFacturacion))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombreProducto)
+                            .addComponent(txtCupo)
+                            .addComponent(txtDiaFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                        .addContainerGap(217, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver)
+                        .addGap(159, 159, 159))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblNombre)
                     .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblCupo)
                     .addComponent(txtCupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtDiaFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDiaFacturacion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtFechaFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(185, Short.MAX_VALUE))
+                    .addComponent(btnIngresar)
+                    .addComponent(btnVolver))
+                .addGap(84, 84, 84))
         );
 
         pack();
@@ -90,47 +119,45 @@ public class VentModificarProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreProductoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+            VentPrincipal ventIn = new VentPrincipal(this.usu);
+            ventIn.setLocationRelativeTo(null);
+            ventIn.setTitle("PRINCIPAL");
+            ventIn.setResizable(false);
+            ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            ventIn.setVisible(true); 
+            dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        String nombre;
+        int diaFacturacion, cupo;
+        
+        nombre = txtNombreProducto.getText();
+        cupo = Integer.parseInt(txtCupo.getText());
+        diaFacturacion = Integer.parseInt(txtDiaFacturacion.getText());
+        
+        TarjetaCredito tar = new TarjetaCredito(usu.getIdUsuario(), nombre, diaFacturacion, cupo);
+        
+        TarjetaDAO tarDAO = new TarjetaDAO();
+        
+        if (tarDAO.buscarTarjetaCredito(usu, tar) == null) {
+            tarDAO.ingresarTarjetaCredito(usu, tar);
+            JOptionPane.showMessageDialog(this, "Tarjeta agredada con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "Tarjeta ya existe con este usuario, elije otro nombre para la tarjeta.");
         }
-        //</editor-fold>
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentModificarProducto().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel lblCupo;
+    private javax.swing.JLabel lblDiaFacturacion;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtCupo;
-    private javax.swing.JTextField txtFechaFacturacion;
+    private javax.swing.JTextField txtDiaFacturacion;
     private javax.swing.JTextField txtNombreProducto;
     // End of variables declaration//GEN-END:variables
 }

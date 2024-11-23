@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.JFrame;
 import modelo.Usuario;
 
 public class VentPrincipal extends javax.swing.JFrame {
@@ -8,6 +9,7 @@ public class VentPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form VentPrincipal
+     * @param usu
      */
     
     
@@ -74,8 +76,18 @@ public class VentPrincipal extends javax.swing.JFrame {
         });
 
         btnModificarProducto.setText("Modificar Producto");
+        btnModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarProductoActionPerformed(evt);
+            }
+        });
 
         btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,12 +147,37 @@ public class VentPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btmModificarGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmModificarGastosActionPerformed
-        // TODO add your handling code here:
+        VentModificarGastos ventIn = new VentModificarGastos(usu);
+        ventIn.setLocationRelativeTo(null);
+        ventIn.setTitle("MODIFICAR GASTOS");
+        ventIn.setResizable(false);
+        ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventIn.setVisible(true); 
+        dispose();
     }//GEN-LAST:event_btmModificarGastosActionPerformed
 
     private void btnModificarIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarIngresoActionPerformed
-        // TODO add your handling code here:
+        //TODO
     }//GEN-LAST:event_btnModificarIngresoActionPerformed
+
+    private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
+        VentModificarProducto ventIn = new VentModificarProducto(this.usu);
+        ventIn.setLocationRelativeTo(null);
+        ventIn.setTitle("AGREGAR PRODUCTO");
+        ventIn.setResizable(false);
+        ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventIn.setVisible(true); 
+        dispose();
+    }//GEN-LAST:event_btnModificarProductoActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        VentInicioSesion ventInicio = new VentInicioSesion();
+        ventInicio.setLocationRelativeTo(null);
+        ventInicio.setTitle("INICIO SESION");
+        ventInicio.setResizable(false);
+        ventInicio.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

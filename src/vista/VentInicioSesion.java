@@ -138,7 +138,7 @@ public class VentInicioSesion extends javax.swing.JFrame {
         UsuarioDao usDAO = new UsuarioDao();
         Usuario usBD = usDAO.buscarUsuario(nombreUsuario);
         
-        if (usBD.getContrasenia().equals(contrasena)) {
+        if ((usBD != null) &&  (usBD.getContrasenia().equals(contrasena))) {
             VentPrincipal ventIn = new VentPrincipal(usBD);
             ventIn.setLocationRelativeTo(null);
             ventIn.setTitle("PRINCIPAL");

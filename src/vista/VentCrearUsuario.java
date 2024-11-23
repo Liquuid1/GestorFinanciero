@@ -112,8 +112,7 @@ public class VentCrearUsuario extends javax.swing.JFrame {
             usDao.registrarUsuario(usu);
             JOptionPane.showMessageDialog(this, "Usuario registrado con exito");
             dispose();
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Usuario ya existe, no se puede registrar");
         }
         

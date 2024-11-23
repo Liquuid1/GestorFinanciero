@@ -1,21 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-/**
- *
- * @author liquu
- */
+import controlador.GastosDAO;
+import controlador.TarjetaDAO;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+import modelo.Gasto;
+import modelo.GastoCuotas;
+import modelo.TarjetaCredito;
+
 public class VentModificarGastos extends javax.swing.JFrame {
+    
+    private Usuario usu;
 
     /**
      * Creates new form VentModificarGastos
      */
-    public VentModificarGastos() {
+    public VentModificarGastos(Usuario usu) {
         initComponents();
+        this.usu = usu;
+        lblFechaGasto.hide();
+        lblMontoCuota.hide();
+        lblMontoTotalGasto.hide();
+        lblNombreGasto.hide();
+        lblSeparador1.hide();
+        lblSeparador2.hide();
+        lblTarjetaAsociada.hide();
+        lblTitulo.hide();
+        txtAnioGasto.hide();
+        txtDiaGasto.hide();
+        txtMesGasto.hide();
+        txtMontoCuota.hide();
+        txtMontoTotalGasto.hide();
+        txtNombreGasto.hide();
+        txtNumCuotas.hide();
+        lblNumCuota.hide();
+        jcTarjetas.hide();
+        
+        btnIngresar.hide();
+        
     }
 
     /**
@@ -27,57 +52,367 @@ public class VentModificarGastos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTipoGasto = new javax.swing.JLabel();
+        jcTipoGasto = new javax.swing.JComboBox<>();
+        lblNombreGasto = new javax.swing.JLabel();
+        lblFechaGasto = new javax.swing.JLabel();
+        lblMontoTotalGasto = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        txtNombreGasto = new javax.swing.JTextField();
+        txtMontoTotalGasto = new javax.swing.JTextField();
+        txtDiaGasto = new javax.swing.JTextField();
+        txtMesGasto = new javax.swing.JTextField();
+        txtAnioGasto = new javax.swing.JTextField();
+        lblSeparador1 = new javax.swing.JLabel();
+        lblSeparador2 = new javax.swing.JLabel();
+        lblMontoCuota = new javax.swing.JLabel();
+        lblNumCuota = new javax.swing.JLabel();
+        lblTarjetaAsociada = new javax.swing.JLabel();
+        txtMontoCuota = new javax.swing.JTextField();
+        txtNumCuotas = new javax.swing.JTextField();
+        jcTarjetas = new javax.swing.JComboBox<>();
+        btnIngresar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblTipoGasto.setText("Tipo de gasto");
+
+        jcTipoGasto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione tipo de gasto...", "Fijo", "Unico", "Cuotas" }));
+        jcTipoGasto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcTipoGastoActionPerformed(evt);
+            }
+        });
+
+        lblNombreGasto.setText("Nombre");
+
+        lblFechaGasto.setText("Fecha");
+
+        lblMontoTotalGasto.setText("Monto Total");
+
+        lblTitulo.setText("DATOS DEL GASTO");
+
+        txtDiaGasto.setText("dd");
+        txtDiaGasto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiaGastoActionPerformed(evt);
+            }
+        });
+
+        txtMesGasto.setText("mm");
+        txtMesGasto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMesGastoActionPerformed(evt);
+            }
+        });
+
+        txtAnioGasto.setText("aa");
+
+        lblSeparador1.setText("/");
+
+        lblSeparador2.setText("/");
+
+        lblMontoCuota.setText("Monto Cuota");
+
+        lblNumCuota.setText("Número de cuotas");
+
+        lblTarjetaAsociada.setText("Tarjeta");
+
+        btnIngresar.setText("Ingresar Gasto");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblTitulo)
+                                .addComponent(lblFechaGasto)
+                                .addComponent(lblMontoTotalGasto)
+                                .addComponent(lblNombreGasto)
+                                .addComponent(lblMontoCuota)
+                                .addComponent(lblTarjetaAsociada))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(lblTipoGasto)))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcTipoGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnVolver)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDiaGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblSeparador1)
+                                        .addGap(3, 3, 3)
+                                        .addComponent(txtMesGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblSeparador2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtAnioGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtMontoCuota, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(71, 71, 71)
+                                        .addComponent(lblNumCuota)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNumCuotas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtMontoTotalGasto)
+                                    .addComponent(txtNombreGasto)
+                                    .addComponent(jcTarjetas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(btnIngresar)))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoGasto)
+                    .addComponent(jcTipoGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70)
+                .addComponent(lblTitulo)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNombreGasto)
+                            .addComponent(txtNombreGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblFechaGasto)
+                        .addComponent(txtDiaGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMesGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAnioGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblSeparador1)
+                        .addComponent(lblSeparador2)))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMontoTotalGasto)
+                    .addComponent(txtMontoTotalGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMontoCuota)
+                    .addComponent(lblNumCuota)
+                    .addComponent(txtMontoCuota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumCuotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTarjetaAsociada)
+                    .addComponent(jcTarjetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresar)
+                    .addComponent(btnVolver))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentModificarGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentModificarGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentModificarGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentModificarGastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void txtDiaGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaGastoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDiaGastoActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentModificarGastos().setVisible(true);
-            }
-        });
+    private void txtMesGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMesGastoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMesGastoActionPerformed
+
+    private void jcTipoGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcTipoGastoActionPerformed
+        
+        if (jcTipoGasto.getSelectedItem().toString().equals("Fijo")) {
+            agregarGastoFijo();
+        } else if (jcTipoGasto.getSelectedItem().toString().equals("Unico")) {
+            agregarGastoUnico();
+        } else if (jcTipoGasto.getSelectedItem().toString().equals("Cuotas")) {
+            agregarGastoCuotas();
+        }
+    }//GEN-LAST:event_jcTipoGastoActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        if (jcTipoGasto.getSelectedItem().toString().equals("Fijo")) {
+            ingresarGastoSinCuotas();
+        } else if (jcTipoGasto.getSelectedItem().toString().equals("Unico")) {
+            ingresarGastoSinCuotas();
+        } else if (jcTipoGasto.getSelectedItem().toString().equals("Cuotas")) {
+            ingresarGastoCuotas();
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+            VentPrincipal ventIn = new VentPrincipal(this.usu);
+            ventIn.setLocationRelativeTo(null);
+            ventIn.setTitle("PRINCIPAL");
+            ventIn.setResizable(false);
+            ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            ventIn.setVisible(true); 
+            dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void ingresarGastoSinCuotas(){
+        GastosDAO gasDAO = new GastosDAO();
+        String dia = txtDiaGasto.getText();
+        String mes = txtMesGasto.getText();
+        String anio = "20"+txtAnioGasto.getText();
+        
+ 
+        Date fecha = new Date(mes+"/"+dia+"/"+anio);
+        
+        boolean unico = false;
+        if (jcTipoGasto.getSelectedItem().toString().equals("Fijo")) {
+            unico = false;
+        } else if (jcTipoGasto.getSelectedItem().toString().equals("Unico")) {
+            unico = true;
+        }
+        
+        Gasto gas = new Gasto(usu.getIdUsuario(), Integer.parseInt(txtMontoTotalGasto.getText()),
+                fecha, txtNombreGasto.getText(),unico);
+        
+        if (gasDAO.ingresarGasto(gas, usu)) {
+            JOptionPane.showMessageDialog(this, "Gasto ingresado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha podido ingresar el gasto.");
+        }
+        
+        
+    }
+    
+    private void ingresarGastoCuotas(){
+        
+        
     }
 
+    private void agregarGastoFijo() {
+        lblNombreGasto.setVisible(rootPaneCheckingEnabled);
+        lblMontoTotalGasto.setVisible(rootPaneCheckingEnabled);
+        lblFechaGasto.setVisible(rootPaneCheckingEnabled);
+        lblSeparador1.setVisible(rootPaneCheckingEnabled);
+        lblSeparador2.setVisible(rootPaneCheckingEnabled);
+        
+        txtNombreGasto.setVisible(rootPaneCheckingEnabled);
+        txtDiaGasto.setVisible(rootPaneCheckingEnabled);
+        txtMesGasto.setVisible(rootPaneCheckingEnabled);
+        txtAnioGasto.setVisible(rootPaneCheckingEnabled);
+        txtMontoTotalGasto.setVisible(rootPaneCheckingEnabled);     
+        
+        lblMontoCuota.hide();
+        lblNumCuota.hide();
+        lblTarjetaAsociada.hide();
+        
+        txtMontoCuota.hide();
+        txtNumCuotas.hide();
+        jcTarjetas.hide();
+        
+        btnIngresar.setVisible(rootPaneCheckingEnabled);
+       
+    }
+    
+    private void agregarGastoUnico() {
+        lblNombreGasto.setVisible(rootPaneCheckingEnabled);
+        lblMontoTotalGasto.setVisible(rootPaneCheckingEnabled);
+        lblFechaGasto.setVisible(rootPaneCheckingEnabled);
+        lblSeparador1.setVisible(rootPaneCheckingEnabled);
+        lblSeparador2.setVisible(rootPaneCheckingEnabled);
+        
+        txtNombreGasto.setVisible(rootPaneCheckingEnabled);
+        txtDiaGasto.setVisible(rootPaneCheckingEnabled);
+        txtMesGasto.setVisible(rootPaneCheckingEnabled);
+        txtAnioGasto.setVisible(rootPaneCheckingEnabled);
+        txtMontoTotalGasto.setVisible(rootPaneCheckingEnabled);    
+        
+        lblMontoCuota.hide();
+        lblNumCuota.hide();
+        lblTarjetaAsociada.hide();
+        
+        txtMontoCuota.hide();
+        txtNumCuotas.hide();
+        jcTarjetas.hide();
+        
+        btnIngresar.setVisible(rootPaneCheckingEnabled);
+    }
+    
+    private void agregarGastoCuotas() {
+        lblNombreGasto.setVisible(rootPaneCheckingEnabled);
+        lblMontoTotalGasto.setVisible(rootPaneCheckingEnabled);
+        lblFechaGasto.setVisible(rootPaneCheckingEnabled);
+        lblSeparador1.setVisible(rootPaneCheckingEnabled);
+        lblSeparador2.setVisible(rootPaneCheckingEnabled);
+        
+        txtNombreGasto.setVisible(rootPaneCheckingEnabled);
+        txtDiaGasto.setVisible(rootPaneCheckingEnabled);
+        txtMesGasto.setVisible(rootPaneCheckingEnabled);
+        txtAnioGasto.setVisible(rootPaneCheckingEnabled);
+        txtMontoTotalGasto.setVisible(rootPaneCheckingEnabled);   
+        
+        lblMontoCuota.setVisible(rootPaneCheckingEnabled);
+        lblNumCuota.setVisible(rootPaneCheckingEnabled);
+        lblTarjetaAsociada.setVisible(rootPaneCheckingEnabled);
+        
+        txtMontoCuota.setVisible(rootPaneCheckingEnabled);
+        txtNumCuotas.setVisible(rootPaneCheckingEnabled);
+        jcTarjetas.setVisible(rootPaneCheckingEnabled);
+        
+        btnIngresar.setVisible(rootPaneCheckingEnabled);
+        
+        jcTarjetas.addItem("Selecciona");
+        TarjetaDAO buscador = new TarjetaDAO();
+        ArrayList<TarjetaCredito> lista = new ArrayList<TarjetaCredito>(); 
+        buscador.buscarTarjetasCredito(usu,lista);
+        //QUEDE ACA!!!!
+        
+        if (lista == null) {
+            JOptionPane.showMessageDialog(this, "No existen tarjetas de creditos asociadas a tu usuario.");
+        } else {
+            lista.forEach((agregarTar) -> {
+                System.out.println(agregarTar.getNombre_tarjeta());
+                jcTarjetas.addItem(agregarTar.getNombre_tarjeta());
+            });
+        }
+        
+        
+    }
+   
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> jcTarjetas;
+    private javax.swing.JComboBox<String> jcTipoGasto;
+    private javax.swing.JLabel lblFechaGasto;
+    private javax.swing.JLabel lblMontoCuota;
+    private javax.swing.JLabel lblMontoTotalGasto;
+    private javax.swing.JLabel lblNombreGasto;
+    private javax.swing.JLabel lblNumCuota;
+    private javax.swing.JLabel lblSeparador1;
+    private javax.swing.JLabel lblSeparador2;
+    private javax.swing.JLabel lblTarjetaAsociada;
+    private javax.swing.JLabel lblTipoGasto;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtAnioGasto;
+    private javax.swing.JTextField txtDiaGasto;
+    private javax.swing.JTextField txtMesGasto;
+    private javax.swing.JTextField txtMontoCuota;
+    private javax.swing.JTextField txtMontoTotalGasto;
+    private javax.swing.JTextField txtNombreGasto;
+    private javax.swing.JTextField txtNumCuotas;
     // End of variables declaration//GEN-END:variables
 }
