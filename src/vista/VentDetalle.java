@@ -1,21 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-/**
- *
- * @author liquu
- */
+
+import controlador.GastosDAO;
+import controlador.IngresosDAO;
+import controlador.TarjetaDAO;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Gasto;
+import modelo.Ingresos;
+import modelo.RepresentacionCuota;
+import modelo.Usuario;
+import modelo.FormateadorNumeros;
+
 public class VentDetalle extends javax.swing.JFrame {
+    
+    private int mes;
+    private int anio;
+    private Usuario usu;
+    private ArrayList<Ingresos> ingSeleccionados = new ArrayList<Ingresos>();
+    private ArrayList<Gasto> gasSeleccionados = new ArrayList<Gasto>();
+    private ArrayList<RepresentacionCuota> cuoSeleccionados = new ArrayList<RepresentacionCuota>();
+    private int seleccionFila = -1;
+    
+    
 
     /**
      * Creates new form VentDetalle
      */
-    public VentDetalle() {
+    public VentDetalle(int mes, int anio, Usuario usu) {
         initComponents();
+        this.mes = mes;
+        this.anio = anio;
+        this.usu = usu;
+        
     }
 
     /**
@@ -27,126 +46,369 @@ public class VentDetalle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jcDetalleTabla = new javax.swing.JComboBox<>();
-        btnVolver = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblGestorFinanciero1 = new javax.swing.JLabel();
+        lblGestorFinanciero = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblDetalleFinanciero = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabDetalle = new javax.swing.JTable();
+        btnVolver1 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Detalle");
-
-        jcDetalleTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Gastos", "Ingresos", "Presupuesto" }));
+        jcDetalleTabla.setFont(new java.awt.Font("Roboto Light", 0, 17)); // NOI18N
+        jcDetalleTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Gastos", "Ingresos" }));
+        jcDetalleTabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcDetalleTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcDetalleTablaActionPerformed(evt);
             }
         });
+        jPanel1.add(jcDetalleTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 144, -1));
 
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 120, 30));
+
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contabilidad.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        lblGestorFinanciero1.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero1.setText("MI GESTOR");
+        jPanel1.add(lblGestorFinanciero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, 270, 50));
+
+        lblGestorFinanciero.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero.setText("FINACIERO");
+        jPanel1.add(lblGestorFinanciero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 32, 270, 50));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema-financiero.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 0, 130, -1));
+
+        lblDetalleFinanciero.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblDetalleFinanciero.setText("DETALLE ");
+        jPanel1.add(lblDetalleFinanciero, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+
+        tabDetalle.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Monto", "Fecha", "Fijo o N° Cuotas"
+            }
+        ));
+        tabDetalle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tabDetalleFocusGained(evt);
+            }
+        });
+        tabDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabDetalleMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabDetalle);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 640, 236));
+
+        btnVolver1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btnVolver1.setText("Volver");
+        btnVolver1.setBorder(null);
+        btnVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolver1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 453, 80, 30));
+
+        btnModificar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(null);
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(37, 37, 37)
-                        .addComponent(jcDetalleTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(180, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
-                .addGap(55, 55, 55))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jcDetalleTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnVolver)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcDetalleTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcDetalleTablaActionPerformed
-        // TODO add your handling code here:
+        
+        String op = jcDetalleTabla.getSelectedItem().toString();
+        
+        if (op.equals("Gastos")) {
+            actualizarGastos();
+        } else if (op.equals("Ingresos")) {
+            actualizarIngresos();
+        }
     }//GEN-LAST:event_jcDetalleTablaActionPerformed
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVolverActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    private void actualizarGastos() {
+        
+        
+        limpiarTabla();
+        FormateadorNumeros f = new FormateadorNumeros();
+        ArrayList<Gasto> listaGasto = new ArrayList<Gasto>();
+        ArrayList<RepresentacionCuota> listaCuotas = new ArrayList<RepresentacionCuota>();
+        GastosDAO gasDAO = new GastosDAO();
+        TarjetaDAO tarDAO = new TarjetaDAO();
+        
+        
+        gasDAO.actualizarListaGastos(mes, anio, listaGasto, usu);
+        tarDAO.actualizarListaCuotas(mes, anio, listaCuotas, usu);
+        
+        gasSeleccionados = listaGasto;
+        cuoSeleccionados = listaCuotas;
+        
+        DefaultTableModel dtm = (DefaultTableModel)tabDetalle.getModel();
+        String [] datos = new String[5];
+        
+        for (Gasto gas : listaGasto){
+            datos[0] = ""+gas.getNombre_gasto();
+            datos[1] = f.darFormatoNumero(gas.getMonto());
+            datos[2] = ""+gas.getFecha();
+            
+            if (gas.isEsUnico()) {
+                datos[3] = "No";
+            } else {
+                datos[3] = "si";
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentDetalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            dtm.addRow(datos);
+           
+            
+                
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentDetalle().setVisible(true);
+        for (RepresentacionCuota cuo : listaCuotas) {
+            datos[0] = ""+cuo.getNombre();
+            datos[1] = f.darFormatoNumero(cuo.getMonto());
+            datos[2] = ""+cuo.getFecha();
+            datos[3] = ""+cuo.getSalidaCuotas();
+            dtm.addRow(datos);
+        }
+        
+        tabDetalle.setModel(dtm);  
+        
+    }
+    
+    private void actualizarIngresos() {
+        limpiarTabla();
+        FormateadorNumeros f = new FormateadorNumeros();
+        ArrayList<Ingresos> lista = new ArrayList<Ingresos>();
+        
+        IngresosDAO ingDAO = new IngresosDAO();
+        
+        ingDAO.actualizarListaIngresos(mes, anio, lista, usu);
+        ingSeleccionados = lista;
+        
+        DefaultTableModel dtm = (DefaultTableModel)tabDetalle.getModel();
+        String [] datos = new String[4];
+        
+        for (Ingresos ing : lista) {
+            datos[0] = ing.getNombre_ingreso();
+            datos[1] = f.darFormatoNumero(ing.getMonto());
+            datos[2] = ""+ing.getFecha();
+            
+            if (ing.isFijo()) {
+                datos[3] = "SI";
+            } else {
+                datos[3] = "NO";
             }
-        });
+            dtm.addRow(datos);
+        }
+        tabDetalle.setModel(dtm);
+        
+    }
+    
+    
+    private void limpiarTabla() {
+        DefaultTableModel dtm = (DefaultTableModel)tabDetalle.getModel();
+        dtm.setRowCount(0);
+        ingSeleccionados.clear();
+        gasSeleccionados.clear();
+        cuoSeleccionados.clear();
+    }
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        String op = jcDetalleTabla.getSelectedItem().toString();
+        int id;
+        String nom;
+        if (op.equals("Ingresos")) {
+            id = ingSeleccionados.get(seleccionFila).getId_ingreso();
+            nom = ingSeleccionados.get(seleccionFila).getNombre_ingreso();
+            
+            eliminarIngreso(id,nom);
+        } else if (op.equals("Gastos")) {
+            if (seleccionFila < gasSeleccionados.size()){
+                id = gasSeleccionados.get(seleccionFila).getId_gasto();
+                nom = gasSeleccionados.get(seleccionFila).getNombre_gasto();
+                
+                eliminarGasto(id, nom);
+            } else {
+                id = cuoSeleccionados.get(seleccionFila - gasSeleccionados.size()).getId_cuota();
+                nom = cuoSeleccionados.get(seleccionFila - gasSeleccionados.size()).getNombre();
+                int cuo = cuoSeleccionados.get(seleccionFila - gasSeleccionados.size()).getCuotaActual();
+                
+                eliminarGastoCuota(id, cuo, nom);
+            }
+        }    
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void eliminarIngreso(int id, String nom){
+        if (JOptionPane.showConfirmDialog(this, "¿Estas seguro de eliminar el ingreso "+nom+"?", "Eliminar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            IngresosDAO ing = new IngresosDAO();
+            
+            if (ing.eliminarIngreso(id, usu)) {
+                JOptionPane.showMessageDialog(this, "Ingreso "+nom+" eliminado con exito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocurrio un error, intentelo de nuevo");
+            }
+            
+        }
+        actualizarIngresos();
+    }
+    
+    private void eliminarGasto(int id, String nom) {
+        if (JOptionPane.showConfirmDialog(this, "¿Estas seguro de eliminar el gasto "+nom+"?", "Eliminar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            GastosDAO gas = new GastosDAO();
+            
+            if (gas.eliminarGasto(id, usu)) {
+                JOptionPane.showMessageDialog(this, "Gasto "+nom+" eliminado con exito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocurrio un error, intentelo de nuevo");
+            }
+            
+        }
+        actualizarGastos(); 
+    }
+    
+    private void eliminarGastoCuota(int id,int num_cuo, String nom){
+        if (JOptionPane.showConfirmDialog(this, "¿Estas seguro de eliminar el gasto "+nom+"?", "Eliminar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            TarjetaDAO tar = new TarjetaDAO();
+            
+            if (tar.eliminarGastoCuotas(id, num_cuo)) {
+                JOptionPane.showMessageDialog(this, "Gasto "+nom+" eliminado con exito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocurrio un error, intentelo de nuevo");
+            }
+            
+        }
+        actualizarGastos(); 
+    }
+        
+    
+    private void btnVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver1ActionPerformed
+            VentPrincipal ventIn = new VentPrincipal(this.usu);
+            ventIn.setLocationRelativeTo(null);
+            ventIn.setTitle("PRINCIPAL");
+            ventIn.setResizable(false);
+            ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            ventIn.setVisible(true); 
+            dispose();
+    }//GEN-LAST:event_btnVolver1ActionPerformed
+
+    private void tabDetalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabDetalleFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabDetalleFocusGained
+
+    private void tabDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabDetalleMouseClicked
+        seleccionFila = tabDetalle.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_tabDetalleMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        String op = jcDetalleTabla.getSelectedItem().toString();
+        FormateadorNumeros forma = new FormateadorNumeros();
+        int id, monto;
+        String nom, fecha;     
+        if (op.equals("Ingresos")) {
+            id = ingSeleccionados.get(seleccionFila).getId_ingreso();
+            nom = tabDetalle.getValueAt(seleccionFila, 0).toString();
+            monto = forma.darFormatoint(tabDetalle.getValueAt(seleccionFila, 1).toString());
+            fecha = tabDetalle.getValueAt(seleccionFila, 2).toString();
+
+                    
+            IngresosDAO ingDAO = new IngresosDAO();
+            if (ingDAO.modificarIngreso(id, nom, monto, fecha)) {
+                JOptionPane.showMessageDialog(this, "Ingreso modificado correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(this, "El ingreso no se pudo modificar.");
+            }
+            
+            actualizarIngresos();
+        } else if (op.equals("Gastos")) {
+            if (seleccionFila < gasSeleccionados.size()){
+                JOptionPane.showMessageDialog(this, "Esta funcion aun no esta implementada, lo siento.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Esta funcion aun no esta implementada, lo siento.");
+            }
+        }    
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void modificarIngresos(){
+        
     }
 
+    private void modificarGastos(){
+        
+    }
+    
+    private void modificarGastoCuotas(){
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnVolver1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jcDetalleTabla;
+    private javax.swing.JLabel lblDetalleFinanciero;
+    private javax.swing.JLabel lblGestorFinanciero;
+    private javax.swing.JLabel lblGestorFinanciero1;
+    private javax.swing.JTable tabDetalle;
     // End of variables declaration//GEN-END:variables
 }

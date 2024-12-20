@@ -22,72 +22,104 @@ public class VentCrearUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombreUsuario = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         txtNombreUsuario = new javax.swing.JTextField();
-        lblContrasena = new javax.swing.JLabel();
         btnCrearUsuario = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         txtContrasena = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        lblGestorFinanciero1 = new javax.swing.JLabel();
+        lblGestorFinanciero = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblRegistroUsuario = new javax.swing.JLabel();
+        lblContrasena = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(704, 453));
 
-        lblNombreUsuario.setText("Nombre Usuario");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblContrasena.setText("Contraseña");
+        txtNombreUsuario.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreUsuario.setText("Ingrese su nombre de usuario");
+        txtNombreUsuario.setBorder(null);
+        txtNombreUsuario.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 295, -1));
 
+        btnCrearUsuario.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         btnCrearUsuario.setText("Crear Usuario");
         btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearUsuarioActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 150, 40));
 
+        btnVolver.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, 40));
+
+        txtContrasena.setForeground(new java.awt.Color(204, 204, 204));
+        txtContrasena.setText("**********");
+        txtContrasena.setBorder(null);
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 404, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema-financiero.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 0, 210, -1));
+
+        lblGestorFinanciero1.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero1.setText("MI GESTOR");
+        jPanel1.add(lblGestorFinanciero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, 270, 50));
+
+        lblGestorFinanciero.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero.setText("FINACIERO");
+        jPanel1.add(lblGestorFinanciero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 32, 270, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contabilidad.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        lblRegistroUsuario.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblRegistroUsuario.setText("REGISTRO DE USUARIO");
+        jPanel1.add(lblRegistroUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        lblContrasena.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblContrasena.setText("Contraseña");
+        jPanel1.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+
+        lblNombreUsuario.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblNombreUsuario.setText("Usuario");
+        jPanel1.add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 320, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombreUsuario)
-                            .addComponent(lblContrasena))
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                            .addComponent(txtContrasena))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCrearUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
-                        .addComponent(btnVolver)
-                        .addGap(64, 64, 64))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(99, 99, 99)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContrasena)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrearUsuario)
-                    .addComponent(btnVolver))
-                .addGap(66, 66, 66))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -122,12 +154,24 @@ public class VentCrearUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblContrasena;
+    private javax.swing.JLabel lblGestorFinanciero;
+    private javax.swing.JLabel lblGestorFinanciero1;
     private javax.swing.JLabel lblNombreUsuario;
+    private javax.swing.JLabel lblRegistroUsuario;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables

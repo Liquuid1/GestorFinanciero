@@ -6,21 +6,28 @@
 package vista;
 
 import controlador.UsuarioDao;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
+import modelo.FormateadorNumeros;
 
 /**
  *
  * @author liquu
  */
 public class VentInicioSesion extends javax.swing.JFrame {
+    
+    boolean nombreEditado = false;
+    boolean conEditado = false;
 
     /**
      * Creates new form VentInicioSesion
      */
     public VentInicioSesion() {
         initComponents();
+        FormateadorNumeros fornum = new FormateadorNumeros();
+        fornum.darFormatoNumero(123456);
     }
 
     /**
@@ -32,81 +39,147 @@ public class VentInicioSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnRegistrarse = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        lblNombreUsuario = new javax.swing.JLabel();
-        lblContrasena = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         txtNombreUsuario = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
         txtContrasena = new javax.swing.JPasswordField();
+        btnSalir = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
+        btnRegistrarse = new javax.swing.JButton();
+        lblContrasena = new javax.swing.JLabel();
+        lblNombreUsuario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblInicioSesion = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblGestorFinanciero1 = new javax.swing.JLabel();
+        lblGestorFinanciero = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnRegistrarse.setText("Registrarse");
-        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarseActionPerformed(evt);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtNombreUsuario.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreUsuario.setText("Ingrese su nombre de usuario");
+        txtNombreUsuario.setBorder(null);
+        txtNombreUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreUsuarioFocusGained(evt);
             }
         });
+        txtNombreUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreUsuarioMouseClicked(evt);
+            }
+        });
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreUsuarioActionPerformed(evt);
+            }
+        });
+        txtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreUsuarioKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 300, -1));
 
+        txtContrasena.setForeground(new java.awt.Color(204, 204, 204));
+        txtContrasena.setText("**********");
+        txtContrasena.setBorder(null);
+        txtContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContrasenaFocusGained(evt);
+            }
+        });
+        txtContrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtContrasenaMouseClicked(evt);
+            }
+        });
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 275, -1));
+
+        btnSalir.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 80, 40));
 
-        lblNombreUsuario.setText("Nombre Usuario");
-
-        lblContrasena.setText("Contraseña");
-
+        btnIngresar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.setBorder(null);
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 100, 40));
+
+        btnRegistrarse.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btnRegistrarse.setText("Registrar");
+        btnRegistrarse.setBorder(null);
+        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 90, 40));
+
+        lblContrasena.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblContrasena.setText("Contraseña");
+        jPanel1.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+
+        lblNombreUsuario.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblNombreUsuario.setText("Usuario");
+        jPanel1.add(lblNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema-financiero.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 0, 210, -1));
+
+        lblInicioSesion.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblInicioSesion.setText("INICIO DE SESIÓN");
+        jPanel1.add(lblInicioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contabilidad.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        lblGestorFinanciero1.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero1.setText("MI GESTOR");
+        jPanel1.add(lblGestorFinanciero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, 270, 50));
+
+        lblGestorFinanciero.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero.setText("FINACIERO");
+        jPanel1.add(lblGestorFinanciero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 32, 270, 50));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 320, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(btnRegistrarse)
-                .addGap(185, 185, 185)
-                .addComponent(btnIngresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(lblContrasena))
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(txtContrasena))
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContrasena)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarse)
-                    .addComponent(btnSalir)
-                    .addComponent(btnIngresar))
-                .addGap(48, 48, 48))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -116,7 +189,8 @@ public class VentInicioSesion extends javax.swing.JFrame {
         VentCrearUsuario ventIn = new VentCrearUsuario();
         ventIn.setLocationRelativeTo(null);
         ventIn.setTitle("REGISTRAR USUARIO");
-        ventIn.setResizable(false);
+        ventIn.setSize(827, 514);
+        ventIn.setResizable(true);
         ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ventIn.setVisible(true);     
     }//GEN-LAST:event_btnRegistrarseActionPerformed
@@ -151,12 +225,67 @@ public class VentInicioSesion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
+
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+
+    }//GEN-LAST:event_txtContrasenaActionPerformed
+
+    private void txtNombreUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreUsuarioFocusGained
+
+    }//GEN-LAST:event_txtNombreUsuarioFocusGained
+
+    private void txtNombreUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreUsuarioMouseClicked
+        if (!nombreEditado) {
+            txtNombreUsuario.setText(null);  
+            nombreEditado = true;
+            txtNombreUsuario.setForeground(Color.BLACK);
+        }
+
+    }//GEN-LAST:event_txtNombreUsuarioMouseClicked
+
+    private void txtContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContrasenaMouseClicked
+        if (!conEditado) {
+            txtContrasena.setText(null);
+            conEditado = true;
+            txtContrasena.setForeground(Color.BLACK);
+            
+        }
+    }//GEN-LAST:event_txtContrasenaMouseClicked
+
+    private void txtNombreUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreUsuarioKeyPressed
+        if (!nombreEditado) {
+            txtNombreUsuario.setText(null);  
+            nombreEditado = true;
+            txtNombreUsuario.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtNombreUsuarioKeyPressed
+
+    private void txtContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusGained
+        if (!conEditado) {
+            txtContrasena.setText(null);
+            conEditado = true;
+            txtContrasena.setForeground(Color.BLACK);
+            
+        }
+    }//GEN-LAST:event_txtContrasenaFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnRegistrarse;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblContrasena;
+    private javax.swing.JLabel lblGestorFinanciero;
+    private javax.swing.JLabel lblGestorFinanciero1;
+    private javax.swing.JLabel lblInicioSesion;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtNombreUsuario;

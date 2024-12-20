@@ -29,87 +29,113 @@ public class VentModificarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombre = new javax.swing.JLabel();
-        lblCupo = new javax.swing.JLabel();
-        lblDiaFacturacion = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnIngresar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         txtNombreProducto = new javax.swing.JTextField();
         txtCupo = new javax.swing.JTextField();
         txtDiaFacturacion = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
+        lblGestorFinanciero1 = new javax.swing.JLabel();
+        lblGestorFinanciero = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblRegistroProducto = new javax.swing.JLabel();
+        lblNombreTarjeta = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblCupo = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        lblDiaFacturacion = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblNombre.setText("Nombre Tarjeta");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCupo.setText("Cupo");
-
-        lblDiaFacturacion.setText("Día Facturación");
-
-        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProductoActionPerformed(evt);
-            }
-        });
-
+        btnIngresar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         btnIngresar.setText("Ingresar Tarjeta");
+        btnIngresar.setBorder(null);
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 140, 40));
 
+        btnVolver.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         btnVolver.setText("Volver");
+        btnVolver.setBorder(null);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
             }
         });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, 80, 40));
+
+        txtNombreProducto.setBorder(null);
+        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 310, 40));
+
+        txtCupo.setBorder(null);
+        jPanel1.add(txtCupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 310, 40));
+
+        txtDiaFacturacion.setBorder(null);
+        jPanel1.add(txtDiaFacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 130, 40));
+
+        lblGestorFinanciero1.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero1.setText("MI GESTOR");
+        jPanel1.add(lblGestorFinanciero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, 270, 50));
+
+        lblGestorFinanciero.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero.setText("FINACIERO");
+        jPanel1.add(lblGestorFinanciero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 32, 270, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contabilidad.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema-financiero.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 0, 210, -1));
+
+        lblRegistroProducto.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblRegistroProducto.setText("REGISTRAR TARJETA");
+        jPanel1.add(lblRegistroProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        lblNombreTarjeta.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblNombreTarjeta.setText("Nombre Tarjeta");
+        jPanel1.add(lblNombreTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, 20));
+
+        lblCupo.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblCupo.setText("Cupo");
+        jPanel1.add(lblCupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 320, 20));
+
+        lblDiaFacturacion.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        lblDiaFacturacion.setText("Día de Facturación");
+        jPanel1.add(lblDiaFacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 130, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNombre)
-                    .addComponent(lblCupo)
-                    .addComponent(btnIngresar)
-                    .addComponent(lblDiaFacturacion))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreProducto)
-                            .addComponent(txtCupo)
-                            .addComponent(txtDiaFacturacion, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                        .addContainerGap(217, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVolver)
-                        .addGap(159, 159, 159))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombre)
-                    .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCupo)
-                    .addComponent(txtCupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtDiaFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDiaFacturacion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresar)
-                    .addComponent(btnVolver))
-                .addGap(84, 84, 84))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,6 +170,9 @@ public class VentModificarProducto extends javax.swing.JFrame {
         if (tarDAO.buscarTarjetaCredito(usu, tar) == null) {
             tarDAO.ingresarTarjetaCredito(usu, tar);
             JOptionPane.showMessageDialog(this, "Tarjeta agredada con exito");
+            txtNombreProducto.setText(null);
+            txtCupo.setText(null);
+            txtDiaFacturacion.setText(null);
         } else {
             JOptionPane.showMessageDialog(this, "Tarjeta ya existe con este usuario, elije otro nombre para la tarjeta.");
         }
@@ -153,9 +182,18 @@ public class VentModificarProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblCupo;
     private javax.swing.JLabel lblDiaFacturacion;
-    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblGestorFinanciero;
+    private javax.swing.JLabel lblGestorFinanciero1;
+    private javax.swing.JLabel lblNombreTarjeta;
+    private javax.swing.JLabel lblRegistroProducto;
     private javax.swing.JTextField txtCupo;
     private javax.swing.JTextField txtDiaFacturacion;
     private javax.swing.JTextField txtNombreProducto;

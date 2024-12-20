@@ -11,7 +11,7 @@ public class Conexion
        if(con==null)
        {
           Class.forName("com.mysql.cj.jdbc.Driver");
-          con= DriverManager.getConnection("jdbc:mysql://localhost/EV3","EV3POO","P3ppapig");
+          con= DriverManager.getConnection("jdbc:mysql://localhost/","",""); //aca configurar las credenciales de la base de datos
         }
         return con;
     }

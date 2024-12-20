@@ -1,7 +1,15 @@
 package vista;
 
+import controlador.GastosDAO;
+import controlador.IngresosDAO;
+import controlador.TarjetaDAO;
+import java.time.LocalDate;
+import java.time.Month;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
+import modelo.FormateadorNumeros;
 
 public class VentPrincipal extends javax.swing.JFrame {
     
@@ -27,6 +35,15 @@ public class VentPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnCerrarSesion = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        lblGestorFinanciero1 = new javax.swing.JLabel();
+        lblGestorFinanciero = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnModificarProducto = new javax.swing.JButton();
+        btnModificarIngreso = new javax.swing.JButton();
+        btmModificarGastos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabResumen = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -34,16 +51,82 @@ public class VentPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jcAnio = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
-        btmModificarGastos = new javax.swing.JButton();
-        btnModificarIngreso = new javax.swing.JButton();
-        btnModificarProducto = new javax.swing.JButton();
-        btnCerrarSesion = new javax.swing.JButton();
+        lblResumen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnCerrarSesion.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(153, 153, 153));
+        btnCerrarSesion.setText("Cerrar Sesion");
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 100, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Sistema-financiero.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(687, 0, 140, -1));
+
+        lblGestorFinanciero1.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero1.setText("MI GESTOR");
+        jPanel1.add(lblGestorFinanciero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 12, 270, 50));
+
+        lblGestorFinanciero.setBackground(new java.awt.Color(255, 255, 255));
+        lblGestorFinanciero.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        lblGestorFinanciero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGestorFinanciero.setText("FINACIERO");
+        jPanel1.add(lblGestorFinanciero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 32, 270, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contabilidad.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        btnModificarProducto.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btnModificarProducto.setText("Registrar Producto");
+        btnModificarProducto.setBorder(null);
+        btnModificarProducto.setBorderPainted(false);
+        btnModificarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 170, 40));
+
+        btnModificarIngreso.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btnModificarIngreso.setText("Registrar Ingreso");
+        btnModificarIngreso.setBorder(null);
+        btnModificarIngreso.setBorderPainted(false);
+        btnModificarIngreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarIngresoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificarIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 160, 40));
+
+        btmModificarGastos.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        btmModificarGastos.setText("Registrar gastos");
+        btmModificarGastos.setBorder(null);
+        btmModificarGastos.setBorderPainted(false);
+        btmModificarGastos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btmModificarGastos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btmModificarGastosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btmModificarGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 150, 40));
+
+        tabResumen.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
         tabResumen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
                 "INGRESOS", "GASTOS", "PRESUPUESTO MES", "PRESUPUESTO SEMANAL"
@@ -51,96 +134,56 @@ public class VentPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabResumen);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 640, 80));
+
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel1.setText("Buscar Fecha");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
+        jcMes.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         jcMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mes", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jcMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcMesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 130, -1));
 
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         jLabel2.setText("/");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
 
+        jcAnio.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         jcAnio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Año", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
+        jcAnio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcAnioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
+        btnBuscar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         btnBuscar.setText("Buscar");
-
-        btmModificarGastos.setText("Modificar gastos");
-        btmModificarGastos.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btmModificarGastosActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
 
-        btnModificarIngreso.setText("Modificar Ingreso");
-        btnModificarIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarIngresoActionPerformed(evt);
-            }
-        });
-
-        btnModificarProducto.setText("Modificar Producto");
-        btnModificarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarProductoActionPerformed(evt);
-            }
-        });
-
-        btnCerrarSesion.setText("Cerrar Sesion");
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
-            }
-        });
+        lblResumen.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblResumen.setText("RESUMEN FINANCIERO");
+        jPanel1.add(lblResumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(83, 83, 83)
-                                .addComponent(jcMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel2)
-                                .addGap(38, 38, 38)
-                                .addComponent(jcAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)
-                                .addComponent(btnBuscar))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btmModificarGastos)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnModificarIngreso)
-                                    .addGap(121, 121, 121)
-                                    .addComponent(btnModificarProducto))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(btnCerrarSesion)))
-                .addContainerGap(44, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jcMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jcAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btmModificarGastos)
-                    .addComponent(btnModificarIngreso)
-                    .addComponent(btnModificarProducto))
-                .addGap(47, 47, 47)
-                .addComponent(btnCerrarSesion)
-                .addGap(22, 22, 22))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -157,7 +200,13 @@ public class VentPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btmModificarGastosActionPerformed
 
     private void btnModificarIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarIngresoActionPerformed
-        //TODO
+        VentModificarIngresos ventIn = new VentModificarIngresos(usu);
+        ventIn.setLocationRelativeTo(null);
+        ventIn.setTitle("MODIFICAR INGRESOS");
+        ventIn.setResizable(false);
+        ventIn.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventIn.setVisible(true); 
+        dispose();
     }//GEN-LAST:event_btnModificarIngresoActionPerformed
 
     private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
@@ -179,6 +228,73 @@ public class VentPrincipal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void jcMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcMesActionPerformed
+        if (jcMes.getSelectedIndex() != 0 && jcAnio.getSelectedIndex() != 0) {
+            actualizarResumen();
+        }
+    }//GEN-LAST:event_jcMesActionPerformed
+
+    private void jcAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAnioActionPerformed
+        if (jcMes.getSelectedIndex() != 0 && jcAnio.getSelectedIndex() != 0) {
+            actualizarResumen();
+        }    
+    }//GEN-LAST:event_jcAnioActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (jcMes.getSelectedIndex() != 0 && jcAnio.getSelectedIndex() != 0) {
+            int mes = jcMes.getSelectedIndex();
+            int anio = Integer.parseInt(jcAnio.getSelectedItem().toString());
+            VentDetalle ventIn = new VentDetalle(mes,anio,usu);
+            ventIn.setLocationRelativeTo(null);
+            ventIn.setTitle("VER DETALLE");
+            ventIn.setResizable(false);
+            ventIn.setVisible(true);
+            dispose();          
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese una fecha valida antes.");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void actualizarResumen() {
+        DefaultTableModel dtm = (DefaultTableModel)tabResumen.getModel();
+        dtm.setRowCount(0);
+        FormateadorNumeros forNum = new FormateadorNumeros();
+        IngresosDAO ingDAO = new IngresosDAO();
+        GastosDAO gasDAO = new GastosDAO();
+        TarjetaDAO tarDAO = new TarjetaDAO();
+        int ingresos = 0;
+        int gastos = 0;
+
+        
+        
+        LocalDate fechaResumen = getFechaResumen();
+        LocalDate previo = fechaResumen;
+        LocalDate siguiente = fechaResumen.plusMonths(1).minusDays(1);
+        
+        ingresos = ingDAO.sumarIngresosResumen(previo, siguiente, usu);
+        gastos = gasDAO.sumarGastosResumen(previo, siguiente, usu) + tarDAO.sumarGastosCuotasResumen(previo, siguiente, usu);
+        int preMes = ingresos - gastos;
+        int preSem = Math.round(preMes / 4);
+        
+        String [] datos = new String[4];
+        datos[0] = forNum.darFormatoNumero(ingresos);
+        datos[1] = forNum.darFormatoNumero(gastos);
+        datos[2] = forNum.darFormatoNumero(preMes);
+        datos[3] = forNum.darFormatoNumero(preSem);
+        dtm.addRow(datos);
+        tabResumen.setModel(dtm);
+
+        
+    }
+    
+    private LocalDate getFechaResumen(){
+        int dia = 1;
+        int mes = jcMes.getSelectedIndex();
+        int anio = Integer.parseInt(jcAnio.getSelectedItem().toString());
+        
+        LocalDate res = LocalDate.of(anio,mes,dia);
+        return res;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btmModificarGastos;
@@ -188,9 +304,15 @@ public class VentPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnModificarProducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcAnio;
     private javax.swing.JComboBox<String> jcMes;
+    private javax.swing.JLabel lblGestorFinanciero;
+    private javax.swing.JLabel lblGestorFinanciero1;
+    private javax.swing.JLabel lblResumen;
     private javax.swing.JTable tabResumen;
     // End of variables declaration//GEN-END:variables
 }
